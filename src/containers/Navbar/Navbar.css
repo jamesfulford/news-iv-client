@@ -1,0 +1,30 @@
+.navbar {
+    margin-bottom: 1rem;
+}
+
+.navbar {
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    /* TODO(jafulfor): Use opacity transition */
+    transition: 0.2s color;
+    color: #bbbbbb;
+    cursor: pointer;
+}
+
+.navbar-brand > img {
+    display: inline-block;
+    width: 20px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+ul.nav.navbar-nav li {
+    margin: 0 0.5rem;
+}

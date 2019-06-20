@@ -1,8 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from '../store';
+import store from '../../store';
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
+import './App.css';
 
 const App: React.FC = () => {
   return (
