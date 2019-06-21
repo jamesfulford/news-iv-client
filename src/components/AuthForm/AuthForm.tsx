@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-
-import './AuthForm.css';
+import React, { useState } from "react";
+import { NewUser } from "../../models/user";
+import "./AuthForm.css";
 
 const AuthForm = ({
   heading,
   buttonText,
-  isSignup
+  isSignup,
+  onAuthAction
 }: {
   buttonText: string;
   heading: string;
   isSignup?: boolean;
+  onAuthAction: (user: NewUser) => void;
 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +25,16 @@ const AuthForm = ({
           <form
             onSubmit={e => {
               e.preventDefault();
+              onAuthAction({
+                email,
+                password,
+                username,
+                profileImageUrl
+              });
+              setUsername("");
+              setEmail("");
+              setPassword("");
+              setProfileImageUrl("");
             }}
           >
             <h2>{heading}</h2>
@@ -66,6 +78,12 @@ const AuthForm = ({
                 />
               </>
             )}
+            <button
+              type="submit"
+              className="btn btn-primary btn-block btn-lg mt-3"
+            >
+              {buttonText}
+            </button>
           </form>
         </div>
       </div>

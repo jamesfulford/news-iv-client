@@ -2,6 +2,7 @@ import Main from './Main';
 import { connect } from "react-redux";
 import { AppState } from "../../store/reducers";
 import { withRouter } from "react-router-dom";
+import { signUpUser, signInUser } from "../../store/reducers/currentUser";
 
 function mapStateToProps(state: AppState) {
   return {
@@ -12,7 +13,10 @@ function mapStateToProps(state: AppState) {
 export default withRouter(
   connect(
     mapStateToProps,
-    null
+    {
+      signInUser,
+      signUpUser,
+    }
   )(Main) as any
 );
 
