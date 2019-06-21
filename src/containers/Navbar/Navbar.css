@@ -12,8 +12,6 @@
 }
 
 .navbar a:hover {
-    /* TODO(jafulfor): Use opacity transition */
-    transition: 0.2s color;
     color: #bbbbbb;
     cursor: pointer;
 }

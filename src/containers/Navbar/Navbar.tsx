@@ -14,10 +14,10 @@ export default ({ user }: { user?: User }) => {
         </Link>
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signin" className="btn btn-white">Login</Link>
           </li>
           <li>
-            <Link to="/signin">Login</Link>
+            <Link to="/signup" className="btn btn-primary">Sign Up</Link>
           </li>
         </ul>
       </div>

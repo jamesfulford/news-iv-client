@@ -8,7 +8,7 @@ const Homepage = (props: any) => {
         <div className="home-hero">
             <h1>What's Happening?</h1>
             <h4>New to News IV?</h4>
-            <Link to="/signup" className="btn btn-info">
+            <Link to="/signup" className="btn btn-primary">
                 Sign up here
             </Link>
         </div>
