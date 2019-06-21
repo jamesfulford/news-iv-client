@@ -1,26 +1,4 @@
-import { User } from '../../../models/user';
-import { CurrentUserType, CurrentUserAction } from "./actions";
+import reducer from './reducer';
 
-// State
-export interface CurrentUserState {
-  isAuthenticated: boolean;
-  user?: User;
-}
-const initialState: CurrentUserState = {
-    isAuthenticated: false,
-    user: undefined,
-};
-
-// Reducer
-export default (state: CurrentUserState = initialState, action: CurrentUserAction): CurrentUserState => {
-  switch (action.type) {
-    case CurrentUserType.SET:
-      return {
-        ...state,
-        isAuthenticated: Boolean(action.user && Object.keys(action.user).length > 0),
-        user: action.user
-      };
-    default:
-      return state;
-  }
-};
+export default reducer;
+export * from './actions';
