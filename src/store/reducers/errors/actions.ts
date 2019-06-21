@@ -1,19 +1,26 @@
 export enum ErrorType {
-    SET = "SET_ERROR_MESSAGE",
-    CLEAR = "CLEAR_ERROR_MESSAGE",
+  SET = "SET_ERROR_MESSAGE",
+  CLEAR = "CLEAR_ERROR_MESSAGE"
 }
 
 // Actions
-interface AddErrorAction {
+interface SetErrorAction {
   type: typeof ErrorType.SET;
   error: string;
 }
-interface RemoveErrorAction {
+interface ClearErrorAction {
   type: typeof ErrorType.CLEAR;
 }
 
+// Action creators
+export const setError = (error: string): SetErrorAction => ({
+  type: ErrorType.SET,
+  error
+});
+
+export const clearError = (): ClearErrorAction => ({
+  type: ErrorType.CLEAR,
+});
+
 // Aggregate
-export type ErrorAction = (
-    AddErrorAction
-    | RemoveErrorAction
-);
+export type ErrorAction = SetErrorAction | ClearErrorAction;

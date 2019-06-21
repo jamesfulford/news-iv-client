@@ -1,5 +1,6 @@
 import { User, NewUser, UserLogin } from "../../../models/user";
 import AuthService from "../../../services/AuthService";
+import { errorClearer, errorHandler } from "../errors";
 
 export enum CurrentUserType {
   SET = "SET_CURRENT_USER"
@@ -22,16 +23,18 @@ export function signInUser(user: UserLogin) {
   return (dispatch: any) =>
     AuthService.signIn(user)
       .then(setCurrentUser)
-      .then(dispatch);
-  // .catch();
+      .then(dispatch)
+      .then(errorClearer(dispatch))
+      .catch(errorHandler(dispatch));
 }
 
 export function signUpUser(user: NewUser) {
   return (dispatch: any) =>
     AuthService.signUp(user)
       .then(setCurrentUser)
-      .then(dispatch);
-  // .catch();
+      .then(dispatch)
+      .then(errorClearer(dispatch))
+      .catch(errorHandler(dispatch));
 }
 
 // Aggregate
