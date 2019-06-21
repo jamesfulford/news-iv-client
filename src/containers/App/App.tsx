@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from '../Navbar';
+import Main from '../Main';
 import './App.css';
 
 const App: React.FC = () => {
@@ -11,9 +12,8 @@ const App: React.FC = () => {
       <BrowserRouter>
         <div className="onboarding">
           <Navbar />
+          <Main />
         </div>
-
-        <div>Hello World!</div>
       </BrowserRouter>
     </Provider>
   );
