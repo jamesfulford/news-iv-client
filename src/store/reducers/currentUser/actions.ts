@@ -25,7 +25,10 @@ export function signInUser(user: UserLogin) {
       .then(setCurrentUser)
       .then(dispatch)
       .then(errorClearer(dispatch))
-      .catch(errorHandler(dispatch));
+      .catch(e => {
+        errorHandler(dispatch)(e);
+        throw e;
+      });
 }
 
 export function signUpUser(user: NewUser) {
@@ -34,7 +37,10 @@ export function signUpUser(user: NewUser) {
       .then(setCurrentUser)
       .then(dispatch)
       .then(errorClearer(dispatch))
-      .catch(errorHandler(dispatch));
+      .catch(e => {
+        errorHandler(dispatch)(e);
+        throw e;
+      });
 }
 
 // Aggregate

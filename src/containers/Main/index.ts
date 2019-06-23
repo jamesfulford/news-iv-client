@@ -2,15 +2,16 @@ import Main from './Main';
 import { connect } from "react-redux";
 import { AppState } from "../../store/reducers";
 import { withRouter } from "react-router-dom";
-import { signUpUser, signInUser } from "../../store/reducers/currentUser";
+import { signUpUser, signInUser, CurrentUserState } from "../../store/reducers/currentUser";
 import { clearError } from '../../store/reducers/errors';
 
-function mapStateToProps(state: AppState) {
-  return {
-    currentUser: state.currentUser,
-    errorMessage: state.errors.message
-  };
-}
+const mapStateToProps = (state: AppState): {
+  currentUser: CurrentUserState;
+  errorMessage?: string;
+} => ({
+  currentUser: state.currentUser,
+  errorMessage: state.errors.message
+});
 
 export default withRouter(
   connect(

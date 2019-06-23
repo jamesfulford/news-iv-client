@@ -3,19 +3,22 @@ import { Switch, Route } from "react-router-dom";
 import Homepage from "../../components/Homepage";
 import AuthForm from "../../components/AuthForm";
 import { UserLogin, NewUser } from "../../models/user";
+import { CurrentUserState } from "../../store/reducers/currentUser";
 
 const Main = ({
+  currentUser,
   signInUser,
   signUpUser,
   errorMessage,
-  history,
-  clearError
+  clearError,
+  history
 }: {
+  currentUser: CurrentUserState;
   signInUser: (user: UserLogin) => void;
   signUpUser: (user: NewUser) => void;
   errorMessage?: string;
-  history: any;
   clearError: Function;
+  history: any;
 }) => {
   useEffect(() => {
     // listen() returns an unsubscriber to avoid memory leaks
@@ -32,7 +35,11 @@ const Main = ({
       )}
       <div className="container">
         <Switch>
-          <Route exact path="/" render={props => <Homepage {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={props => <Homepage {...props} currentUser={currentUser} />}
+          />
           <Route
             exact
             path="/signin"

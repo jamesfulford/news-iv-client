@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { NewUser } from "../../models/user";
 import "./AuthForm.css";
+import { ErrorCodes } from "../../models/error";
 
 const AuthForm = ({
   heading,
   buttonText,
   isSignup,
-  onAuthAction
+  onAuthAction,
+  history
 }: {
   buttonText: string;
   heading: string;
   isSignup?: boolean;
   onAuthAction: (user: NewUser) => void;
+  history: any;
 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,18 +26,31 @@ const AuthForm = ({
       <div className="row justify-content-md-center text-center">
         <div className="col-md-6">
           <form
-            onSubmit={e => {
+            onSubmit={async e => {
               e.preventDefault();
-              onAuthAction({
-                email,
-                password,
-                username,
-                profileImageUrl
-              });
-              setUsername("");
-              setEmail("");
-              setPassword("");
-              setProfileImageUrl("");
+              try {
+                await onAuthAction({
+                  email,
+                  password,
+                  username,
+                  profileImageUrl
+                });
+                history.push("/");
+              } catch (e) {
+                switch (e.code) {
+                  case ErrorCodes.BAD_LOGIN:
+                    // Incorrect email or password
+                    setEmail("");
+                    setPassword("");
+                    break;
+                  case ErrorCodes.ALREADY_TAKEN:
+                    // Username or email already taken
+                    break;
+                  default:
+                    setUsername("");
+                    setProfileImageUrl("");
+                }
+              }
             }}
           >
             <h2>{heading}</h2>
