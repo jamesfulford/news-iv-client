@@ -1,4 +1,3 @@
-import { ErrorMessage } from "../../../models/error";
 import { Message } from "../../../models/message";
 import MessageService from "../../../services/MessageService";
 import { errorHandler, errorClearer } from "../errors";
