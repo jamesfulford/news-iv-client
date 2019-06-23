@@ -1,14 +1,14 @@
-import { User } from "../../../models/user";
+import { ExistingUser } from "../../../models/user";
 import { CurrentUserType, CurrentUserAction } from "./actions";
 
 // State
 export interface CurrentUserState {
   isAuthenticated: boolean;
-  user?: User;
+  user?: ExistingUser;
 }
 const initialState: CurrentUserState = {
-    isAuthenticated: false,
-    user: undefined,
+  isAuthenticated: false,
+  user: undefined
 };
 
 export default (

@@ -19,6 +19,10 @@ export default class AuthService {
     );
   }
 
+  public static async logout() {
+    localStorage.clear();
+  }
+
   private static async authCall(
     user: UserLogin,
     type: "signin" | "signup"

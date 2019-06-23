@@ -1,4 +1,4 @@
-import { User, NewUser, UserLogin } from "../../../models/user";
+import { ExistingUser, NewUser, UserLogin } from "../../../models/user";
 import AuthService from "../../../services/AuthService";
 import { errorClearer, errorHandler } from "../errors";
 
@@ -9,10 +9,10 @@ export enum CurrentUserType {
 // Actions
 interface SetCurrentUserAction {
   type: typeof CurrentUserType.SET;
-  user?: User;
+  user?: ExistingUser;
 }
 
-export function setCurrentUser(user: User): SetCurrentUserAction {
+export function setCurrentUser(user?: ExistingUser): SetCurrentUserAction {
   return {
     type: CurrentUserType.SET,
     user
@@ -41,6 +41,13 @@ export function signUpUser(user: NewUser) {
         errorHandler(dispatch)(e);
         throw e;
       });
+}
+
+export function logoutUser() {
+  return (dispatch: any) => {
+    dispatch(setCurrentUser());
+    AuthService.logout();
+  }
 }
 
 // Aggregate
