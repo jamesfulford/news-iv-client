@@ -25,7 +25,9 @@ export default class ApiService {
         data
       })).data;
     } catch (err) {
-      throw (err.response.data as { error: ErrorMessage }).error;
+      throw (err.response.data as {
+        error: ErrorMessage;
+      }).error;
     }
   }
 }
