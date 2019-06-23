@@ -30,14 +30,16 @@ export default ({
                 </Link>
               </li>
               <li>
-                <a
+                <Link
+                  to="/"
+                  className="btn btn-white"
                   onClick={e => {
                     e.preventDefault();
                     logoutUser();
                   }}
                 >
                   Logout
-                </a>
+                </Link>
               </li>
             </>
           ) : (
