@@ -4,11 +4,16 @@ import store from '../../store';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Main from '../Main';
+import initialize from './initialization';
 import './App.css';
+
+const appStore = store();
+
+initialize(appStore);
 
 const App: React.FC = () => {
   return (
-    <Provider store={store()}>
+    <Provider store={appStore}>
       <BrowserRouter>
         <div className="onboarding">
           <Navbar />
