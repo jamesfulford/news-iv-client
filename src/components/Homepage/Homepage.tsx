@@ -7,7 +7,7 @@ import MessageTimeline from '../MessageTimeline';
 
 const Homepage = ({ currentUser }: { currentUser: CurrentUserState }) => {
   return currentUser.user ? (
-    <MessageTimeline />
+    <MessageTimeline currentUser={currentUser} />
   ) : (
     <div className="home-hero">
       <h1>What's Happening?</h1>
