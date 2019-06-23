@@ -20,7 +20,7 @@ export default class AuthService {
   }
 
   public static async logout() {
-    localStorage.clear();
+    ApiService.setTokenHeader();
   }
 
   private static async authCall(
@@ -32,7 +32,8 @@ export default class AuthService {
       `/api/auth/${type}`,
       user
     );
-    localStorage.setItem(AuthService.TOKEN_KEY, token);
+    ApiService.setTokenHeader(token);
+
     return newUser;
   }
 }
