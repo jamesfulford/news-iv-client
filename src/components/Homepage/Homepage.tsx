@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 import './Homepage.css';
 import { CurrentUserState } from '../../store/reducers/currentUser';
+import MessageTimeline from '../MessageTimeline';
 
 const Homepage = ({ currentUser }: { currentUser: CurrentUserState }) => {
   return currentUser.user ? (
-    <div>Hey there {currentUser.user.username}</div>
+    <MessageTimeline />
   ) : (
     <div className="home-hero">
       <h1>What's Happening?</h1>
