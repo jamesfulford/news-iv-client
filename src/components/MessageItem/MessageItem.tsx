@@ -2,6 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import defaultProfileImage from "../../images/default-profile-image.jpg";
+import './MessageItem.css';
 
 export default ({
   text,
@@ -14,7 +15,7 @@ export default ({
   username: string;
   profileImageUrl?: string;
 }) => (
-  <div>
+  <li className="list-group-item">
     <img
       src={profileImageUrl || defaultProfileImage}
       alt={username}
@@ -31,5 +32,5 @@ export default ({
       </span>
       <p>{text}</p>
     </div>
-  </div>
+  </li>
 );
