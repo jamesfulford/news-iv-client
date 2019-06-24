@@ -4,10 +4,14 @@ import MessageItem from "../../components/MessageItem";
 
 export default ({
   messages,
-  fetchMessages
+  fetchMessages,
+  deleteMessage,
+  currentUserId
 }: {
   messages: Message[];
   fetchMessages: Function;
+  deleteMessage: (m: Message) => void;
+  currentUserId?: string;
 }) => {
   useEffect(() => {
     fetchMessages();
@@ -23,6 +27,10 @@ export default ({
               text={m.text}
               username={m.user.username}
               profileImageUrl={m.user.profileImageUrl}
+              onDelete={() => {
+                deleteMessage(m);
+              }}
+              showDelete={m.user._id === currentUserId}
             />
           ))}
         </ul>

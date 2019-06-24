@@ -4,6 +4,7 @@ import Homepage from "../../components/Homepage";
 import AuthForm from "../../components/AuthForm";
 import { UserLogin, NewUser } from "../../models/user";
 import { CurrentUserState } from "../../store/reducers/currentUser";
+import MessageForm from '../MessageForm';
 
 const Main = ({
   currentUser,

@@ -2,18 +2,22 @@ import React from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import defaultProfileImage from "../../images/default-profile-image.jpg";
-import './MessageItem.css';
+import "./MessageItem.css";
 
 export default ({
   text,
   date,
   username,
-  profileImageUrl
+  profileImageUrl,
+  onDelete,
+  showDelete,
 }: {
   text: string;
   date: string;
   username: string;
   profileImageUrl?: string;
+  onDelete: Function;
+  showDelete: boolean;
 }) => (
   <li className="list-group-item">
     <img
@@ -31,6 +35,16 @@ export default ({
         </Moment>
       </span>
       <p>{text}</p>
+      {showDelete && (
+        <button
+          className="btn btn-danger"
+          onClick={() => {
+            onDelete();
+          }}
+        >
+          Delete
+        </button>
+      )}
     </div>
   </li>
 );
