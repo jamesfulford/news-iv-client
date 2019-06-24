@@ -16,8 +16,8 @@ export default (
   switch (action.type) {
     case MessageType.LOAD:
       return { ...state, messages: action.messages };
-    case MessageType.ADD:
-      return { ...state, messages: [action.message, ...state.messages] };
+    // case MessageType.ADD:
+    //   return { ...state, messages: [action.message, ...state.messages] };
     case MessageType.REMOVE:
       return { ...state, messages: state.messages.filter(m => m._id !== action.id) }
     default:
