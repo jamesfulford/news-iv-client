@@ -69,6 +69,7 @@ const Main = ({
               );
             }}
           />
+          <Route exact path="/users/:id/messages/new" component={MessageForm} />
         </Switch>
       </div>
     </>
