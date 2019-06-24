@@ -9,4 +9,8 @@ export default class MessageService {
     public static async postMessage (userId: string, message: NewMessage): Promise<Message> {
         return await ApiService.hit('POST', `/api/users/${userId}/messages`, message);
     }
+
+    public static async deleteMessage (userId: string, message: Message): Promise<Message> {
+        return await ApiService.hit('DELETE', `/api/users/${userId}/messages/${message._id}`);
+    }
 }
