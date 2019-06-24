@@ -14,7 +14,6 @@ export default ({
   const [text, setText] = useState("");
   return (
     <>
-      {errorText && <div className="alert alert-danger">{errorText}</div>}
       <form
         onSubmit={e => {
           e.preventDefault();
