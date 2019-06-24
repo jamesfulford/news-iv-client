@@ -1,8 +1,11 @@
 import { ExistingUser } from "./user";
 
-export interface Message {
+export interface NewMessage {
+  text: string;
+}
+
+export interface Message extends NewMessage {
   _id: string;
   createdAt: string;
-  text: string;
   user: ExistingUser;
 }
