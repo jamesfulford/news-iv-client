@@ -1,8 +1,12 @@
 import ApiService from './ApiService';
-import { Message } from '../models/message';
+import { Message, NewMessage } from "../models/message";
 
 export default class MessageService {
     public static async getMessages (): Promise<Message[]> {
         return await ApiService.hit('GET', '/api/messages');
+    }
+
+    public static async postMessage (userId: string, message: NewMessage): Promise<Message> {
+        return await ApiService.hit('POST', `/api/users/${userId}/messages`, message);
     }
 }
