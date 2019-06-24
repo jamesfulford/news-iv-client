@@ -5,39 +5,34 @@ export enum ErrorType {
   CLEAR = "CLEAR_ERROR_MESSAGE"
 }
 
-// Actions
+// Set Error
 interface SetErrorAction {
   type: typeof ErrorType.SET;
   error: string;
 }
-interface ClearErrorAction {
-  type: typeof ErrorType.CLEAR;
-}
-
-// Action creators
 const handleSetError = (error: string): SetErrorAction => ({
   type: ErrorType.SET,
   error
 });
-
-const handleClearError = (): ClearErrorAction => ({
-  type: ErrorType.CLEAR
-});
-
-// Thunks
-export function clearError() {
-  return (dispatch: Function) => dispatch(handleClearError());
-}
 export function setError(e: ErrorMessage) {
   return (dispatch: Function) => dispatch(handleSetError(e.message));
 }
-
-// Helpers (pre-thunks?)
-export function errorClearer(dispatch: Function) {
-  return () => clearError()(dispatch);
-}
 export function errorHandler(dispatch: Function) {
   return (e: ErrorMessage) => setError(e)(dispatch);
+}
+
+// Clear Error
+interface ClearErrorAction {
+  type: typeof ErrorType.CLEAR;
+}
+const handleClearError = (): ClearErrorAction => ({
+  type: ErrorType.CLEAR
+});
+export function clearError() {
+  return (dispatch: Function) => dispatch(handleClearError());
+}
+export function errorClearer(dispatch: Function) {
+  return () => clearError()(dispatch);
 }
 
 // Aggregate

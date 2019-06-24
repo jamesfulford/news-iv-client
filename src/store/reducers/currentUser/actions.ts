@@ -6,19 +6,16 @@ export enum CurrentUserType {
   SET = "SET_CURRENT_USER"
 }
 
-// Actions
 interface SetCurrentUserAction {
   type: typeof CurrentUserType.SET;
   user?: ExistingUser;
 }
-
 export function setCurrentUser(user?: ExistingUser): SetCurrentUserAction {
   return {
     type: CurrentUserType.SET,
     user
   };
 }
-
 export function signInUser(user: UserLogin) {
   return (dispatch: any) =>
     AuthService.signIn(user)
@@ -30,7 +27,6 @@ export function signInUser(user: UserLogin) {
         throw e;
       });
 }
-
 export function signUpUser(user: NewUser) {
   return (dispatch: any) =>
     AuthService.signUp(user)
@@ -42,7 +38,6 @@ export function signUpUser(user: NewUser) {
         throw e;
       });
 }
-
 export function logoutUser() {
   return (dispatch: any) => {
     dispatch(setCurrentUser());

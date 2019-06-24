@@ -38,7 +38,9 @@ const Main = ({
           <Route
             exact
             path="/"
-            render={props => <Homepage {...props} currentUser={currentUser} />}
+            render={props => (
+              <Homepage {...props} currentUser={currentUser} />
+            )}
           />
           <Route
             exact

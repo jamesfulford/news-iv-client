@@ -5,7 +5,7 @@ import { CurrentUserState } from "../../store/reducers/currentUser";
 
 export default ({
   currentUser,
-  logoutUser
+  logoutUser,
 }: {
   currentUser: CurrentUserState;
   logoutUser: Function;
