@@ -7,13 +7,11 @@ import Main from '../Main';
 import initialize from './initialization';
 import './App.css';
 
-const appStore = store();
-
-initialize(appStore);
+initialize(store);
 
 const App: React.FC = () => {
   return (
-    <Provider store={appStore}>
+    <Provider store={store}>
       <BrowserRouter>
         <div className="onboarding">
           <Navbar />
