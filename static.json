@@ -5,7 +5,7 @@
     },
     "proxies": {
         "/api": {
-            "origin": "https://news-iv.herokuapp.com"
+            "origin": "https://news-iv.herokuapp.com/api"
         }
     }
 }
