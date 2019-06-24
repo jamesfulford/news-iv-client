@@ -6,7 +6,7 @@ export interface MessageState {
 }
 
 const initialState: MessageState = {
-  messages: [],
+  messages: []
 };
 
 export default (
@@ -16,8 +16,10 @@ export default (
   switch (action.type) {
     case MessageType.LOAD:
       return { ...state, messages: action.messages };
+    case MessageType.ADD:
+      return { ...state, messages: [action.message, ...state.messages] };
     // case MessageType.REMOVE:
-    //   return { ...state, message: undefined };
+    //   return { ...state, messages: state.messages.filter(m => m._id !== action.message._id) }
     default:
       return state;
   }
