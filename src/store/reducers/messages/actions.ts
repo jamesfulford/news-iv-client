@@ -6,7 +6,7 @@ import { AppState } from "..";
 export enum MessageType {
   LOAD = "LOAD_MESSAGES",
   REMOVE = "REMOVE_MESSAGE",
-  ADD = "ADD_MESSAGE",
+  ADD = "ADD_MESSAGE"
 }
 
 // Actions
@@ -19,6 +19,11 @@ interface AddMessageAction {
   message: Message;
 }
 
+interface RemoveMessageAction {
+  type: MessageType.REMOVE;
+  id: string;
+}
+
 // Action creators
 const loadMessages = (messages: Message[]): LoadMessagesAction => ({
   type: MessageType.LOAD,
@@ -27,7 +32,12 @@ const loadMessages = (messages: Message[]): LoadMessagesAction => ({
 
 const addMessage = (message: Message): AddMessageAction => ({
   type: MessageType.ADD,
-  message,
+  message
+});
+
+const removeMessage = (message: Message): RemoveMessageAction => ({
+  type: MessageType.REMOVE,
+  id: message._id
 });
 
 export const fetchMessages = () => {
@@ -48,8 +58,23 @@ export const postMessage = (message: NewMessage) => {
         .then(errorClearer(dispatch))
         .catch(errorHandler(dispatch));
     }
-  }
-}
+  };
+};
+
+export const deleteMessage = (message: Message) => {
+  return (dispatch: any, getState: () => AppState) => {
+    const user = getState().currentUser.user;
+    if (user) {
+      MessageService.deleteMessage(user.id, message)
+        .then(message => dispatch(removeMessage(message)))
+        .then(errorClearer(dispatch))
+        .catch(errorHandler(dispatch));
+    }
+  };
+};
 
 // Aggregate
-export type MessageAction = LoadMessagesAction | AddMessageAction;
+export type MessageAction =
+  | LoadMessagesAction
+  | AddMessageAction
+  | RemoveMessageAction;
