@@ -19,9 +19,11 @@ export default ({
           e.preventDefault();
           postMessage({
             text
-          });
-          setText("");
-          history.push("/");
+          })
+            .then(() => {
+              setText("");
+              history.push("/");
+            });
         }}
       >
         <label htmlFor="newMessageText">Post your latest news:</label>
