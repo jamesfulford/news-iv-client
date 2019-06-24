@@ -7,5 +7,9 @@ export interface NewMessage {
 export interface Message extends NewMessage {
   _id: string;
   createdAt: string;
-  user: ExistingUser;
+  user: {
+    _id: string;
+    username: string;
+    profileImageUrl: string;
+  };
 }
